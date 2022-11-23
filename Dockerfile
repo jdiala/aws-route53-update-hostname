@@ -1,9 +1,9 @@
-FROM amazon/aws-cli:latest
+FROM debian:stable-slim
 LABEL maintainer="jdiala@keymind.com"
 
-RUN yum update -y \
-  && yum install -y jq \
-  && yum clean all
+RUN apt update -y \
+  && apt install -y awscli jq curl \
+  && apt clean all
 
 COPY ./update-hosted-zone-by-hostname.sh .
 
